@@ -13,7 +13,6 @@ namespace NSwagStudio.Views.SwaggerGenerators
         public AspNetCoreToSwaggerGeneratorView(AspNetCoreToOpenApiCommand command, NSwagDocument document)
         {
             InitializeComponent();
-            ViewModelHelper.RegisterViewModel(Model, this);
 
             Model.Command = command;
             Model.Document = document;

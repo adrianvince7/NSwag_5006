@@ -12,7 +12,6 @@ namespace NSwagStudio.Views.CodeGenerators
         public SwaggerToCSharpClientGeneratorView(NSwagDocument document)
         {
             InitializeComponent();
-            ViewModelHelper.RegisterViewModel(Model, this);
 
             _document = document;
             Model.Command = document.CodeGenerators.OpenApiToCSharpClientCommand;

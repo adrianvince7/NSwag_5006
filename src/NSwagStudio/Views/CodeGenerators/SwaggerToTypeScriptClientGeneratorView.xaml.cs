@@ -12,7 +12,6 @@ namespace NSwagStudio.Views.CodeGenerators
         public SwaggerToTypeScriptClientGeneratorView(NSwagDocument document)
         {
             InitializeComponent();
-            ViewModelHelper.RegisterViewModel(Model, this);
 
             _document = document;
             Model.Command = document.CodeGenerators.OpenApiToTypeScriptClientCommand;

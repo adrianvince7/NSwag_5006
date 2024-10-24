@@ -12,6 +12,9 @@ using MyToolkit.Utilities;
 using NSwagStudio.ViewModels;
 using Newtonsoft.Json;
 using System.Net;
+using Avalonia.Controls;
+using Avalonia.Input;
+using Avalonia.Interactivity;
 
 namespace NSwagStudio.Views
 {
@@ -22,7 +25,6 @@ namespace NSwagStudio.Views
         public MainWindow()
         {
             InitializeComponent();
-            ViewModelHelper.RegisterViewModel(Model, this);
             RegisterShortcuts();
             CheckForApplicationUpdate();
             LoadWindowState();

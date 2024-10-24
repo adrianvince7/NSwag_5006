@@ -15,7 +15,6 @@ namespace NSwagStudio.Views
         public DocumentView()
         {
             InitializeComponent();
-            ViewModelHelper.RegisterViewModel(Model, this);
             Loaded += delegate { UpdateCodeGeneratorTabs(); };
             Unloaded += OnUnloaded;
         }

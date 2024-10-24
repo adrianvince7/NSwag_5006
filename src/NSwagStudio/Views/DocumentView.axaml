@@ -1,8 +1,8 @@
 ﻿<UserControl x:Class="NSwagStudio.Views.DocumentView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:NSwagStudio.ViewModels"
              xmlns:converters="clr-namespace:MyToolkit.Converters;assembly=MyToolkit.Extended"
              mc:Ignorable="d" 
@@ -14,7 +14,7 @@
         <converters:VisibilityConverter x:Key="VisibilityConverter" />
     </UserControl.Resources>
 
-    <Border DataContext="{StaticResource ViewModel}" IsEnabled="{Binding IsLoading, Converter={StaticResource NotConverter}}">
+    <Border DataContext="{StaticResource ViewModel}" IsEnabled="{CompiledBinding IsLoading, Converter={StaticResource NotConverter}}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*" MinWidth="400" />

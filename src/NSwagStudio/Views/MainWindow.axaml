@@ -1,6 +1,9 @@
-﻿<Window x:Class="NSwagStudio.Views.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="NSwagStudio.Views.MainWindow"
         xmlns:viewModels="clr-namespace:NSwagStudio.ViewModels"
         xmlns:views="clr-namespace:NSwagStudio.Views"
         xmlns:controls="clr-namespace:NSwagStudio.Controls"
@@ -42,7 +45,7 @@
         <TabControl Grid.Row="1" TabStripPlacement="Left" Margin="8,8,0,0">
             <!-- Documents -->
             <TabItem Header="Documents" HeaderTemplate="{StaticResource RotatedTabItem}">
-                <TabControl ItemsSource="{Binding Documents}" controls:TabContent.IsCached="True"
+                <TabControl ItemsSource="{Binding Documents}" TabContent.IsCached="True"
                             SelectedItem="{Binding SelectedDocument, Mode=TwoWay}"
                             Margin="8">
                     <TabControl.ItemTemplate>
@@ -68,11 +71,11 @@
                             </Grid>
                         </DataTemplate>
                     </TabControl.ItemTemplate>
-                    <controls:TabContent.Template>
+                    <TabContent.Template>
                         <DataTemplate>
                             <views:DocumentView Document="{Binding}" Margin="8" />
                         </DataTemplate>
-                    </controls:TabContent.Template>
+                    </TabContent.Template>
                 </TabControl>
             </TabItem>
             <!-- About -->
@@ -103,4 +106,3 @@
         </TabControl>
     </Grid>
 </Window>
-

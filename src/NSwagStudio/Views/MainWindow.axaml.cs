@@ -1,24 +1,8 @@
-﻿using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Windows;
-using System.Windows.Documents;
-using System.Windows.Input;
-using MyToolkit.Mvvm;
-using MyToolkit.Storage;
-using MyToolkit.UI;
-using MyToolkit.Utilities;
-using NSwagStudio.ViewModels;
-using Newtonsoft.Json;
-using System.Net;
 using Avalonia.Controls;
-using Avalonia.Input;
-using Avalonia.Interactivity;
 
-namespace NSwagStudio.Views
-{
-    public partial class MainWindow : Window
+namespace NSwagStudio.Views;
+
+public partial class MainWindow : Window
     {
         private bool _closeCancelled = false;
 
@@ -131,4 +115,3 @@ namespace NSwagStudio.Views
             Process.Start(uri.ToString());
         }
     }
-}

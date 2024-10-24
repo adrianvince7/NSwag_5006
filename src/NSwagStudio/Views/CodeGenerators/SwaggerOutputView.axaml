@@ -26,7 +26,7 @@
             <avalonedit:TextEditor Padding="8" Background="GhostWhite" FontFamily="Consolas" IsReadOnly="True" ShowLineNumbers="True" 
                                    SyntaxHighlighting="JavaScript" FontSize="10pt">
                 <i:Interaction.Behaviors>
-                    <controls:AvalonEditBehavior Text="{Binding SwaggerCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <AvalonEditBehavior Text="{Binding SwaggerCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </i:Interaction.Behaviors>
             </avalonedit:TextEditor>
         </Border>

@@ -366,7 +366,7 @@
                 <avalonedit:TextEditor Background="GhostWhite" FontFamily="Consolas" IsReadOnly="True" ShowLineNumbers="True"
                                        SyntaxHighlighting="JavaScript" FontSize="10pt" Padding="8">
                     <i:Interaction.Behaviors>
-                        <controls:AvalonEditBehavior Text="{Binding ClientCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <AvalonEditBehavior Text="{Binding ClientCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </i:Interaction.Behaviors>
                 </avalonedit:TextEditor>
             </Border>

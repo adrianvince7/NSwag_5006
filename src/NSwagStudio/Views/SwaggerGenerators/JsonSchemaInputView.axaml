@@ -2,8 +2,9 @@
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             xmlns:codeGeneration="clr-namespace:NSwag.Commands.CodeGeneration;assembly=NSwag.Commands"
-             xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:codeGeneration="clr-namespace:NSwag.Commands.CodeGeneration;assembly=NSwag.Commands"
+             xmlns:avaloniaedit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:controls="clr-namespace:NSwagStudio.Controls"
              mc:Ignorable="d" 
@@ -23,12 +24,12 @@
         </StackPanel>
 
         <Border Grid.Row="1" Margin="-8,0,-8,-8" BorderThickness="0,1,0,0" BorderBrush="LightGray">
-            <avalonedit:TextEditor x:Name="JsonSchema" Padding="8" FontFamily="Consolas" Background="GhostWhite" ShowLineNumbers="True"
                                    SyntaxHighlighting="JavaScript" FontSize="10pt">
                 <i:Interaction.Behaviors>
                     <controls:AvalonEditBehavior Text="{Binding Schema, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </i:Interaction.Behaviors>
-            </avalonedit:TextEditor>
+            <avaloniaedit:TextEditor x:Name="JsonSchema" Padding="8" FontFamily="Consolas" Background="GhostWhite" ShowLineNumbers="True"
+            </avaloniaedit:TextEditor>
         </Border>
     </Grid>
 </UserControl>

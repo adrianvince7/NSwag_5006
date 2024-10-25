@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:swaggerGenerators1="clr-namespace:NSwagStudio.ViewModels.SwaggerGenerators"
              xmlns:controls="clr-namespace:NSwagStudio.Controls"
-             xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
+             xmlns:avaloniaedit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
@@ -38,12 +38,12 @@
         </StackPanel>
         
         <Border Grid.Row="1" Margin="-8,0,-8,-8" BorderThickness="0,1,0,0" BorderBrush="LightGray">
-            <avalonedit:TextEditor Padding="8" FontFamily="Consolas" Background="GhostWhite" ShowLineNumbers="True"
+            <avaloniaedit:TextEditor Padding="8" FontFamily="Consolas" Background="GhostWhite" ShowLineNumbers="True"
                                    SyntaxHighlighting="JavaScript" FontSize="10pt">
                 <i:Interaction.Behaviors>
                     <controls:AvalonEditBehavior Text="{Binding Command.Json, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </i:Interaction.Behaviors>
-            </avalonedit:TextEditor>
+            </avaloniaedit:TextEditor>
         </Border>
     </Grid>
 </UserControl>

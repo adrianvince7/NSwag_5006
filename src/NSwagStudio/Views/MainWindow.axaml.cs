@@ -9,7 +9,6 @@ public partial class MainWindow : Window
         public MainWindow()
         {
             InitializeComponent();
-            RegisterShortcuts();
             CheckForApplicationUpdate();
             LoadWindowState();
             RegisterFileOpenHandler();
@@ -19,23 +18,7 @@ public partial class MainWindow : Window
         }
 
         private MainWindowModel Model => (MainWindowModel)Resources["ViewModel"];
-
-        private void RegisterShortcuts()
-        {
-            ShortcutManager.RegisterShortcut(typeof(MainWindow), new KeyGesture(Key.N, ModifierKeys.Control),
-                () => Model.CreateDocumentCommand.TryExecute());
-            ShortcutManager.RegisterShortcut(typeof(MainWindow), new KeyGesture(Key.O, ModifierKeys.Control),
-                () => Model.OpenDocumentCommand.TryExecute());
-            ShortcutManager.RegisterShortcut(typeof(MainWindow), new KeyGesture(Key.S, ModifierKeys.Control),
-                () => Model.SaveDocumentCommand.TryExecute(Model.SelectedDocument));
-            ShortcutManager.RegisterShortcut(typeof(MainWindow), new KeyGesture(Key.S, ModifierKeys.Control | ModifierKeys.Shift),
-                () => Model.SaveAllDocumentsCommand.TryExecute(Model.Documents));
-            ShortcutManager.RegisterShortcut(typeof(MainWindow), new KeyGesture(Key.W, ModifierKeys.Control),
-                () => Model.CloseDocumentCommand.TryExecute(Model.SelectedDocument));
-            ShortcutManager.RegisterShortcut(typeof(MainWindow), new KeyGesture(Key.W, ModifierKeys.Control | ModifierKeys.Shift),
-                () => Model.CloseAllDocumentsCommand.TryExecute(Model.Documents));
-        }
-
+        
         private void RegisterFileOpenHandler()
         {
             var fileHandler = new FileOpenHandler();

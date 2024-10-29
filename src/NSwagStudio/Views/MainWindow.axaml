@@ -24,18 +24,18 @@
 
         <Menu>
             <MenuItem Header="_File">
-                <MenuItem Header="_New" Command="{Binding CreateDocumentCommand}" InputGestureText="Ctrl-N" />
-                <MenuItem Header="_Open" Command="{Binding OpenDocumentCommand}" InputGestureText="Ctrl-O" />
-                <MenuItem Header="_Close" InputGestureText="Ctrl-W"
+                <MenuItem Header="_New" Command="{Binding CreateDocumentCommand}" HotKey="Ctrl-N" />
+                <MenuItem Header="_Open" Command="{Binding OpenDocumentCommand}" HotKey="Ctrl-O" />
+                <MenuItem Header="_Close" HotKey="Ctrl-W"
                           Command="{Binding CloseDocumentCommand}"
                           CommandParameter="{Binding SelectedDocument}" />
-                <MenuItem Header="Close A_ll" InputGestureText="Ctrl+Shift-W"
+                <MenuItem Header="Close A_ll" HotKey="Ctrl+Shift-W"
                           Command="{Binding CloseAllDocumentsCommand}"
                           CommandParameter="{Binding Documents}" />
-                <MenuItem Header="_Save" InputGestureText="Ctrl-S"
+                <MenuItem Header="_Save" HotKey="Ctrl-S"
                           Command="{Binding SaveDocumentCommand}"
                           CommandParameter="{Binding SelectedDocument}" />
-                <MenuItem Header="Save _All" InputGestureText="Ctrl+Shift-S"
+                <MenuItem Header="Save _All" HotKey="Ctrl+Shift-S"
                           Command="{Binding SaveAllDocumentsCommand}"
                           CommandParameter="{Binding Documents}" />
                 <MenuItem Header="Save _As" Command="{Binding SaveAsDocumentCommand}" CommandParameter="{Binding SelectedDocument}" />

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Globalization;
-using System.Windows;
-using System.Windows.Data;
-using System.Windows.Markup;
+using Avalonia.Data.Converters;
+using Avalonia.Markup.Xaml;
+
 
 namespace NSwagStudio.Converters
 {
@@ -17,16 +17,10 @@ namespace NSwagStudio.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null && Target == null)
-                return Visibility.Visible;
-
-            if (value == null || Target == null)
-                return Visibility.Collapsed;
-
-            if (value.Equals(Target))
-                return Visibility.Visible;
-
-            return Visibility.Collapsed;
+            if ((value == null && Target == null) || (value.Equals(Target)))
+                return true;
+            
+            return false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

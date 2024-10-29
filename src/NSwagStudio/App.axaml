@@ -1,9 +1,22 @@
 <Application xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="NSwagStudio.App"
-             RequestedThemeVariant="Default">
-
-    <Application.Styles>
-        <FluentTheme />
-    </Application.Styles>
-</Application>
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  x:Class="NSwagStudio.App"
+                  RequestedThemeVariant="Default">
+              
+                  <Application.Styles>
+                      <FluentTheme />
+                  </Application.Styles>
+                  <!-- Additional resources can be added here if needed -->
+                  <Application.Resources>
+                      <DataTemplate x:Key="RotatedTabItem">
+                          <ContentPresenter Margin="4,8,4,8">
+                              <ContentPresenter.RenderTransform>
+                                  <RotateTransform Angle="270" />
+                              </ContentPresenter.RenderTransform>
+                              <ContentPresenter.Content>
+                                  <TextBlock Text="{TemplateBinding Content}" FontSize="14" />
+                              </ContentPresenter.Content>
+                          </ContentPresenter>
+                      </DataTemplate>
+                  </Application.Resources>
+              </Application>

@@ -1,4 +1,16 @@
+using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
+using Avalonia.Platform.Storage;
+using Avalonia.Threading;
+using MyToolkit.Storage;
+using Newtonsoft.Json;
+using NSwagStudio.ViewModels;
 
 namespace NSwagStudio.Views;
 
@@ -40,15 +52,24 @@ public partial class MainWindow : Window
         {
             Width = ApplicationSettings.GetSetting("WindowWidth", Width);
             Height = ApplicationSettings.GetSetting("WindowHeight", Height);
-            Left = ApplicationSettings.GetSetting("WindowLeft", Left);
-            Top = ApplicationSettings.GetSetting("WindowTop", Top);
-            WindowState = ApplicationSettings.GetSetting("WindowState", WindowState);
 
-            if (Left == double.NaN)
+            var left = ApplicationSettings.GetSetting("WindowLeft", double.NaN);
+            var top = ApplicationSettings.GetSetting("WindowTop", double.NaN);
+
+            if (!double.IsNaN(left) && !double.IsNaN(top))
+            {
+                Position = new PixelPoint((int)left, (int)top);
+            }
+            else
+            {
                 WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            }
+
+            var windowState = ApplicationSettings.GetSetting("WindowState", WindowState.Normal);
+            WindowState = windowState;
         }
 
-        protected override async void OnClosing(CancelEventArgs e)
+        protected override async void OnClosing(WindowClosingEventArgs e)
         {
             if (!_closeCancelled)
             {
@@ -76,7 +97,7 @@ public partial class MainWindow : Window
 
                 _closeCancelled = true;
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-                Dispatcher.InvokeAsync(Close);
+                Dispatcher.UIThread.InvokeAsync(Close);
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             }
 
@@ -87,14 +108,43 @@ public partial class MainWindow : Window
         {
             ApplicationSettings.SetSetting("WindowWidth", Width);
             ApplicationSettings.SetSetting("WindowHeight", Height);
-            ApplicationSettings.SetSetting("WindowLeft", Left);
-            ApplicationSettings.SetSetting("WindowTop", Top);
+            ApplicationSettings.SetSetting("WindowLeft", double.NaN);
+            ApplicationSettings.SetSetting("WindowTop", double.NaN);
             ApplicationSettings.SetSetting("WindowState", WindowState);
         }
 
         private void OnOpenHyperlink(object sender, RoutedEventArgs e)
         {
-            var uri = ((Hyperlink)sender).NavigateUri;
+            var uri = ((HyperlinkButton)sender).NavigateUri;
             Process.Start(uri.ToString());
+        }
+        
+        IDisposable? _selectFilesInteractionDisposable;
+
+        protected override void OnDataContextChanged(EventArgs e)
+        {
+            _selectFilesInteractionDisposable?.Dispose();
+
+            if (DataContext is MainWindowModel vm)
+            {
+                _selectFilesInteractionDisposable =
+                    vm.SelectFilesInteraction.RegisterHandler(InteractionHandler);
+            }
+
+            base.OnDataContextChanged(e);
+        }
+
+        private async Task<string[]?> InteractionHandler(string input)
+        {
+            var topLevel = TopLevel.GetTopLevel(this);
+
+            var storageFiles = await topLevel!.StorageProvider.OpenFilePickerAsync(
+                new FilePickerOpenOptions() 
+                { 
+                    AllowMultiple = true, 
+                    Title = input
+                });
+
+            return storageFiles?.Select(x => x.Name)?.ToArray();
         }
     }
